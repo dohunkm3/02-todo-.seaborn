@@ -61,7 +61,7 @@ matplotlib과 비교했을때 여러 장점이 있다.
 
 
 ```python
-# --- seaborn과 관련 모듈 물러오기
+# --- seaborn과 관련 모듈 불러오기
 # 주로 seaborn을 sns란 별칭으로 사용하지만 여기서는 seaborn으로 사용한다.
 import seaborn  # as sns
 
@@ -144,7 +144,7 @@ The code that caused this warning is on line 376 of the file /Users/.../python/v
   gh_list = BeautifulSoup(http)
 ```
 
-여기서 지시하는대로 **gh_list = BeautifulSoup(http)**를 **gh_list = BeautifulSoup(http, features='lxml')** 로 수정한 후 이 코드를 실행하면 경고 메시지가 발생하지 않는다.
+여기서 지시하는대로 **gh_list = BeautifulSoup(http)** 를 **gh_list = BeautifulSoup(http, features='lxml')** 로 수정한 후 이 코드를 실행하면 경고 메시지가 발생하지 않는다.
 
 코드를 수정하지 않고 경고 메시지가 출력되지 않도록 하려면 다음 코드를 실행하면 된다.
 
@@ -982,12 +982,12 @@ pyplot.show()
 - ***hue*** 에는 데이터의 변수명을 입력하며 생성한 바이올린 도형들을 입력한 변수의 범주에 따라 색으로 나눠준다.
 - ***data*** 는 입력하는 전체 데이터의 이름이다. ***x, y*** 를 입력하지 않고 **data**만 입력하면 전체 데이터를 옆으로 긴 데이터프레임(long-form dataframe)으로 인식하여 수치형 변수들에 대해서만 바이올린 플롯을 작성한다.
 - ***order*** 에는 문자열의 리스트를 입력하여 각 범주값이 그래프에 바이올린 도형으로 그려지는 순서를 설정한다.
-- ***scale***은 각 바이올린 도형의 너비를 조정하는 방법이다. *{'area' | 'count' | 'width'}* 중 하나를 선택하여 기본값은 **'area'**로 바이올린 도형의 면적(area)이 같도록 한다. **'count'** 를 입력하면 바이올린 도형의 너비는 데이터 개수에 따라 조정된다. **'width'** 를 입력하면 모든 바이올린 도형은 같은 너비를 가지게 된다.
+- ***scale***은 각 바이올린 도형의 너비를 조정하는 방법이다. *{'area' | 'count' | 'width'}* 중 하나를 선택하여 기본값은 **'area'** 로 바이올린 도형의 면적(area)이 같도록 한다. **'count'** 를 입력하면 바이올린 도형의 너비는 데이터 개수에 따라 조정된다. **'width'** 를 입력하면 모든 바이올린 도형은 같은 너비를 가지게 된다.
 - ***inner*** 는 각 바이올린 도형 내부에 그릴 그래프나 도형을 선택한다. *{'box' | 'quartile' | 'point' | 'stick' | None}'* 중 하나를 선택하며 기본값은 **'box'** 로 작은 박스 그래프를 그린다. **'quartile'** 은 사분위 값을 바이올린 도형안에 점선으로 표시한다. **'point'** 와 **'stick'** 는 데이터 포인트를 각각 점과 선으로 표시한다.
 - ***split*** 에는 **bool** 자료형을 입력하며 그려지는 바이올린 도형이 하나의 범주에 대한 좌우 대칭 커널 밀도 플롯이 아니라, ***hue*** 로 입력 받는 범주형 변수의 두 가지 범주로 바이올린 도형의 양 날개를 나누어 그린다. 기본값은 **False**이며 **True**로 설정하여 사용하기 위해서는 반드시 ***hue*** 로 입력 받는 변수가 **2개의 범주**를 가지는 범주형 변수여야만 한다.
     + 두 개의 범주를 가지는 변수를 ***hue*** 에 사용할 때 ***split*** 을 **True**로 설정하면 각 범주에 대해 바이올린을 절반으로 양쪽 날개에 그리게 된다. 이를 통해 커널 밀도 분포를 직접 비교하기가 훨씬 수월해진다.
     + 매개변수 **split** 는 매개변수 ***hue*** 의 값이 반드시 설정되어 있어야 적용가능하다. 즉, ***hue*** 가 없다면 **split=True** 로 설정한 것과 **split=False** 로 설정한 것은 아무런 차이가 없다.
-        - ***hue*** 를 설정하고 매개변수 ***split*** 를 **False**로 설정하면 x축에 그려지는 각 바이올린 플롯이 ***hue** 의 범주에 따라 두 개가 각각 그려진다. 
+        - ***hue*** 를 설정하고 매개변수 ***split*** 를 **False**로 설정하면 x축에 그려지는 각 바이올린 플롯이 ***hue*** 의 범주에 따라 두 개가 각각 그려진다. 
         - ***hue*** 를 설정하고 매개변수 ***split*** 를 **True**로 설정하면 x축에 그려지는 각 바이올린 플롯이 ***hue*** 의 두 개 범주를 바이올린 플롯의 각 날개로 그리게 된다. 
 - ***orient***는 **'v'** 또는 **'h'** 를 입력 받아 바이올린 플롯이 그려지는 방향을 vertical(세로) 또는 horizontal(가로)로 설정한다. 기본값은 **None**으로 x와 y 중 수치형 데이터를 입력한 축의 방향으로 그린다. 즉 y축에 수치형 데이터 값을 가지는 변수명이 입력되면 바이올린 플롯은 세로로 그려진다. 수치형 변수들에 대해서만 바이올린 플롯을 작성할 경우 사용한다.
 - 더 자세한 내용은 아래의 링크에서 확인할 수 있다.
@@ -1474,7 +1474,7 @@ pyplot.show()
 - ***size*** 는 데이터의 열 이름을 입력받아 크기가 다른 점들을 생성한다. 만약 범주형을 입력하면 범주에 따라 크기를 다르게 하고, 수치형을 입력하면 자동으로 일정한 수치에 따라 점의 크기를 다르게 표현한다.
 - ***data*** 는 입력되는 전체 데이터의 이름이다.
 - ***palette*** 는 **hue**로 칠해지는 색상들의 순서를 설정한다.
-- 양 축에 라벨링을 하려면 **pyplot.xlabel()* *과 **pyplot.ylabel()** 을 호출하면 된다.
+- 양 축에 라벨링을 하려면 **pyplot.xlabel()** 과 **pyplot.ylabel()** 을 호출하면 된다.
 - 더 자세한 내용은 아래의 링크에서 확인할 수 있다.
     - https://seaborn.pydata.org/generated/seaborn.scatterplot.html
 
@@ -1939,24 +1939,24 @@ pyplot.show()
 - ***hue*** 에는 데이터의 변수명을 입력하며 생성한 범주별 도표를 입력한 변수의 범주에 따라 다른 색으로 표현한다.
 - ***data*** 는 입력한는 전체 데이터의 이름이다.
 - ***row, col*** 은 범주형 변수명을 입력하여 범주 별로 그래프를 행과 열로 작성한다.
-- ***kind*** 는 그릴 플롯의 종류를 설정한다. *{'point' | 'bar' | 'strip' | 'swarm' | 'box' | 'violin' | 'boxen'}* 중 하나를 선택한다. 기본값은 **'strip'**으로 스트립 플롯을 그린다. **'point'**는 꺾은선 그래프를 그려주는 **pointplot**을, **'boxen'**은 큰 데이터 세트에 사용되는 박스 그래프인 **boxenplot**을 그린다.  
+- ***kind*** 는 그릴 플롯의 종류를 설정한다. *{'point' | 'bar' | 'strip' | 'swarm' | 'box' | 'violin' | 'boxen'}* 중 하나를 선택한다. 기본값은 **'strip'** 으로 스트립 플롯을 그린다. **'point'** 는 꺾은선 그래프를 그려주는 **pointplot**을, **'boxen'** 은 큰 데이터 세트에 사용되는 박스 그래프인 **boxenplot**을 그린다.  
 - 더 자세한 내용은 아래의 링크에서 확인할 수 있다.
     - https://seaborn.pydata.org/generated/seaborn.catplot.html
 
 캣 플롯에서는 행으로 표현하기 원하는 범주형 변수는 매개변수 ***row*** 에 설정하고, 열로 표현하기 원하는 범주형 변수는 매개변수 ***col*** 에 설정하면 된다.
 
-**catplot()** 메소드에서 **x**와 **y** 변수만 입력하여 하나의 그래프를 그리면 **pyplot.title**로 제목을 짓고 x축과 y축을 라벨링 할 때**pyplot.xlabel()**과 **pyplot.ylabel()**을 호출하면 된다. 
+**catplot()** 메소드에서 **x**와 **y** 변수만 입력하여 하나의 그래프를 그리면 **pyplot.title**로 제목을 짓고 x축과 y축을 라벨링 할 때 **pyplot.xlabel()** 과 **pyplot.ylabel()** 을 호출하면 된다. 
 
 캣 플롯에서 각 축을 라벨링 하려면 **catplot**이 반환하는 객체를 변수에 할당하고 해당 변수에 **set_axis_labels**(*xlabel='', ylabel=''*)로 값을 설정하여 각 축을 라벨링한다. 
 - **catplot**이 반환하는 객체는 **FacetGrid**다.
 - **FacetGrid**는 변수 간의 관계를 범주에 따라 행과 열로 표현하는 그리드다.
     - **seaborn** 패키지에서는 FacetGrid를 '조건부 관계(conditional relationships)를 그리기 위한 다중 플롯 그리드'로 정의하고 있다.
   
-**catplot()** 메소드에서 매개변수 ***row*** 를 사용하여 캣 플롯이 ***row*** 의 범주에 따라 여러 개의 서브 플롯들로 그릴 수 있다. 그러므로 전체 도표에 대해 제목을 짓기 위해서는 **pyplot.suptitle()**을 사용해야 한다. 여러 개의 서브 플롯이 그려지면 캣 플롯이 반환하는 객체를 변수에 할당하고 **axes** 속성을 이용하여 라벨링을 할 수 있다. 그려지는 서브 플롯의 순서에 따라 **axes[x, y].set_xlabel()**, **axes[x, y].set_ylabel()**로 라벨링을 한다. 여기서 **[x, y]**은 몇 번째 서브 플롯인지를 설정한다. ***x*** 가 행이 되고 ***y*** 가 열이 되는데 예를 들어 **[0, 3]**이라면 첫 번째 행의 네번째 열을 의미한다.
+**catplot()** 메소드에서 매개변수 ***row*** 를 사용하여 캣 플롯이 ***row*** 의 범주에 따라 여러 개의 서브 플롯들로 그릴 수 있다. 그러므로 전체 도표에 대해 제목을 짓기 위해서는 **pyplot.suptitle()** 을 사용해야 한다. 여러 개의 서브 플롯이 그려지면 캣 플롯이 반환하는 객체를 변수에 할당하고 **axes** 속성을 이용하여 라벨링을 할 수 있다. 그려지는 서브 플롯의 순서에 따라 **axes[x, y].set_xlabel()**, **axes[x, y].set_ylabel()** 로 라벨링을 한다. 여기서 **[x, y]** 은 몇 번째 서브 플롯인지를 설정한다. ***x*** 가 행이 되고 ***y*** 가 열이 되는데 예를 들어 **[0, 3]** 이라면 첫 번째 행의 네번째 열을 의미한다.
 
 [seaborn.catplot](https://seaborn.pydata.org/generated/seaborn.catplot.html)
 - Figure-level interface for drawing categorical plots onto a FacetGrid.
-- seaborn.**catplot**(*x=None, y=None, hue=None, data=None, row=None, col=None, col_wrap=None, estimator=<function mean at 0x10a2a03b0>, ci=95, n_boot=1000, units=None, seed=None, order=None, hue_order=None, row_order=None, col_order=None, kind='strip', height=5, aspect=1, orient=None, color=None, palette=None, legend=True, legend_out=True, sharex=True, sharey=True, margin_titles=False, facet_kws=None, **kwargs*)
+- seaborn.**catplot**(_x=None, y=None, hue=None, data=None, row=None, col=None, col_wrap=None, estimator=<function mean at 0x10a2a03b0>, ci=95, n_boot=1000, units=None, seed=None, order=None, hue_order=None, row_order=None, col_order=None, kind='strip', height=5, aspect=1, orient=None, color=None, palette=None, legend=True, legend_out=True, sharex=True, sharey=True, margin_titles=False, facet_kws=None, **kwargs_)
     - This function provides access to several axes-level functions that show the relationship between a numerical and one or more categorical variables using one of several visual representations. The kind parameter selects the underlying axes-level function to use:
         - Categorical scatterplots:
             - stripplot() (with kind="strip"; the default)
@@ -2161,13 +2161,13 @@ pyplot.show()
 - ***data*** 는 행이 데이터의 관측값, 열이 변수인 전체 데이터 세트이다.
 - ***hue*** 는 전체 데이터 세트 중 하나의 변수명이며 **pairplot**의 막대나 마커를 범주별로 색상을 다르게 표현할 수 있다.
 - ***palette*** 는 자동으로 칠하는 색상의 순서와 종류를 설정한다.
-- ***kind*** 는 서로 다른 변수에 대한 그래프를 그릴 때 그래프의 종류를 설정한다. *{‘scatter’ | ‘reg’}* 중 하나를 선택하며 기본값은 **'scatter'**로 산점도를 그린다. **'reg'**는 선형 회귀 적합선이 포함된 산점도를 그린다.
-- ***diag_kind*** 는 같은 변수 간 그래프를 그릴때 그래프의 종류를 설정한다. **{‘auto’, ‘hist’, ‘kde’, None}** 중 하나를 선택하며 기본값은 **'auto'**이다.
+- ***kind*** 는 서로 다른 변수에 대한 그래프를 그릴 때 그래프의 종류를 설정한다. *{‘scatter’ | ‘reg’}* 중 하나를 선택하며 기본값은 **'scatter'** 로 산점도를 그린다. **'reg'** 는 선형 회귀 적합선이 포함된 산점도를 그린다.
+- ***diag_kind*** 는 같은 변수 간 그래프를 그릴때 그래프의 종류를 설정한다. **{‘auto’, ‘hist’, ‘kde’, None}** 중 하나를 선택하며 기본값은 **'auto'** 이다.
 - ***markers*** 는 산점도의 마커 모양을 설정한다.
 - 더 자세한 내용은 아래의 링크에서 확인할 수 있다.
     - https://seaborn.pydata.org/generated/seaborn.pairplot.html
 
-전체 페어 플롯에 대해 제목을 설정하려면 **pyplot.suptitle()**을 사용해야한다. 그리고 페어 플롯은 여러 개의 서브 플롯을 그리기 때문에 페어 플롯이 반환하는 객체를 변수에 할당하고 **axes** 속성을 사용하여 각 축을 라벨링 할 수 있다. 그려지는 서브 플롯의 순서에 따라 **axes[*x, y*].set_xlabel()**, **axes[*x, y*].set_ylabel()** 메소드로 라벨링을 하면된다. 여기서 **[*x, y*]**은 몇 번째 서브 플롯인지를 설정할 때 사용한다. ***x***가 행이고 ***y***가 열인데, 예를 들어 **[0, 3]**이라면 첫 번째 행의 네번째 열을 의미한다.
+전체 페어 플롯에 대해 제목을 설정하려면 **pyplot.suptitle()** 을 사용해야한다. 그리고 페어 플롯은 여러 개의 서브 플롯을 그리기 때문에 페어 플롯이 반환하는 객체를 변수에 할당하고 **axes** 속성을 사용하여 각 축을 라벨링 할 수 있다. 그려지는 서브 플롯의 순서에 따라 **axes[*x, y*].set_xlabel()**, **axes[*x, y*].set_ylabel()** 메소드로 라벨링을 하면된다. 여기서 **[*x, y*]** 은 몇 번째 서브 플롯인지를 설정할 때 사용한다. ***x***가 행이고 ***y***가 열인데, 예를 들어 **[0, 3]** 이라면 첫 번째 행의 네번째 열을 의미한다.
 
 [seaborn.pairplot](https://seaborn.pydata.org/generated/seaborn.pairplot.html)
 - Plot pairwise relationships in a dataset.
